@@ -1,0 +1,129 @@
+:host(.button-solid) {
+  box-shadow: 0;
+  --background-activated: var(--ion-color-primary-shade, none);
+  --background-focused: var(--ion-color-primary-shade, none);
+  --background-hover: var(--ion-color-primary-tint, none);
+}
+
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #f4f4f4;
+}
+
+ion-item {
+  --border-width: 0;
+}
+
+form {
+  width: 100%;
+}
+
+.form1 {
+  --background: #fff;
+  --color: #000;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+ion-item {
+  --border-width: 0;
+  --inner-border-width: 0;
+  --highlight-height: 0;
+  --border-color: transparent;
+}
+
+ion-button {
+  color: #fff;
+}
+
+.registro {
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+
+.registro {
+  color: #000;
+  transition: none;
+  --text-align: center;
+  text-transform: none;
+  text-decoration: none;
+  --background: transparent;
+  --background-activated: transparent;
+  --background-hover: transparent;
+  --box-shadow: none;
+}
+
+.registre {
+  margin-left: 5px;
+  color: #50C2C9;
+
+}
+
+.ion-margin-top {
+  --background: #50C2C9;
+  --background-hover: transparent;
+  --background-activated: hsl(183, 44%, 51%);
+  border-radius: 8px;
+}
+
+form {
+  margin-top: 128px;
+}
+
+h1 {
+  color: #000;
+  margin-bottom: 32px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #50C2C9;
+  color: #fff;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.line {
+  border: 24px solid rgb(80, 194, 201);
+  width: 100%;
+}
+
+.form2 {
+  --background: transparent;
+  --background-activated: transparent;
+  --background-hover: transparent;
+  --box-shadow: none;
+  --ripple-color: transparent;
+  color: #000;
+
+}
+
+.form3 {
+  --size: 25px;
+  --checkbox-background: #ffffff;
+  --checkbox-background-checked: #000000;
+  --border-color: #000000;
+  --border-color-checked: #000000;
+  --checkmark-color: white;
+
+  margin-right: 10px;
+}

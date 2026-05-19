@@ -1,0 +1,68 @@
+<ion-header>
+
+</ion-header>
+
+<div class="line"></div>
+
+<ion-content class="ion-padding">
+
+  <form class="form1" (ngSubmit)="registrar()">
+
+    <h1>Registro</h1>
+
+    <ion-item class="form1">
+      <ion-label position="floating">Nome completo</ion-label>
+      <ion-input type="text" [(ngModel)]="nome" name="nome" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="form1">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="form1">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="senha" name="senha" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="form1">
+      <ion-label position="floating">Confirmar senha</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmarSenha" name="confirmarSenha" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item lines="none" button="false" class="form2">
+      <ion-checkbox class="form3" slot="start" [(ngModel)]="isDonoOng" name="isDonoOng">
+      </ion-checkbox>
+
+      <ion-label>Dono de ONG</ion-label>
+    </ion-item>
+
+    <ion-item lines="none" button="false" class="form2">
+      <ion-checkbox class="form3" slot="start" [(ngModel)]="isDoador" name="isDoador">
+      </ion-checkbox>
+
+      <ion-label>Doador</ion-label>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top" routerLink="/home">
+      Registrar
+    </ion-button>
+
+    <ion-button class="registro" routerLink="/login">
+      Já possui conta?
+      <span class="registre">Faça login aqui</span>
+    </ion-button>
+
+  </form>
+
+  <footer>
+    <ion-button class="secret" routerLink="/home">
+      <img src="assets/img/home.svg" alt="">
+    </ion-button>
+  </footer>
+
+</ion-content>
