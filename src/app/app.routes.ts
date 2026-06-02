@@ -22,6 +22,14 @@ export const routes: Routes = [
     path: 'registro',
     loadComponent: () => import('./registro/registro.page').then( m => m.RegistroPage)
   },
+  {
+    path: 'recuperar',
+    loadComponent: () => import('./recuperar/recuperar.page').then( m => m.RecuperarPage)
+  },
+  {
+    path: 'ong',
+    loadComponent: () => import('./ong/ong.page').then( m => m.OngPage)
+  },
 
 
 ];

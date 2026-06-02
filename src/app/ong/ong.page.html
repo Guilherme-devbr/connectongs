@@ -1,0 +1,55 @@
+<ion-header></ion-header>
+
+<div class="line"></div>
+
+<ion-content class="ion-padding">
+
+  <form (ngSubmit)="cadastrarOng()">
+
+    <h1>Cadastrar ONG</h1>
+
+    <ion-item class="campo">
+      <ion-label position="floating">Nome da ONG</ion-label>
+      <ion-input [(ngModel)]="nome" name="nome" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="campo">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input [(ngModel)]="descricao" name="descricao" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="campo">
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input [(ngModel)]="endereco" name="endereco" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="campo">
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input type="tel" [(ngModel)]="telefone" name="telefone">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="campo">
+      <ion-label position="floating">URL da Imagem</ion-label>
+      <ion-input [(ngModel)]="imagem" name="imagem">
+      </ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="btn-cadastrar">
+
+      Cadastrar ONG
+
+    </ion-button>
+
+  </form>
+
+</ion-content>
+
+<footer>
+  <ion-button class="secret" routerLink="/home">
+    <img src="assets/img/home.svg" alt="">
+  </ion-button>
+</footer>
