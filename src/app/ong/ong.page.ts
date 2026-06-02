@@ -22,7 +22,7 @@ export class OngPage implements OnInit {
   telefone = '';
   redesSociais = '';
   pix = '';
-  endereco = '';
+  cep = '';
   imagem = '';
 
   cadastrarOng() {
@@ -33,7 +33,7 @@ export class OngPage implements OnInit {
       telefone: this.telefone,
       redesSociais: this.redesSociais,
       pix: this.pix,
-      endereco: this.endereco,
+      cep: this.cep,
       imagem: this.imagem
     };
 

@@ -72,8 +72,6 @@ export class LoginPage implements OnInit {
           isDonoOng: dados.isDonoOng,
           logado: true
         }));
-
-        alert('Login realizado com sucesso!');
         this.router.navigate(['/home']);
       }
     });
