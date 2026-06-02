@@ -1,6 +1,10 @@
-<ion-header></ion-header>
-
-<div class="line"></div>
+<div class="line">
+  <div class="menu">
+    <div class="nav-item" routerLink="/ong">Cadastro ONG</div>
+    <div class="nav-item" routerLink="/apis">Sobre API</div>
+    <div class="nav-item" routerLink="/sobre-nos">Sobre Nós</div>
+  </div>
+</div>
 
 <ion-content class="ion-padding">
 
@@ -21,7 +25,7 @@
     </ion-item>
 
     <ion-item class="campo">
-      <ion-label position="floating">cep</ion-label>
+      <ion-label position="floating">CEP</ion-label>
       <ion-input [(ngModel)]="cep" name="cep" required>
       </ion-input>
     </ion-item>
@@ -47,7 +51,7 @@
   </form>
 
 </ion-content>
-
+<div class="spacer"></div>
 <footer>
   <ion-button class="secret" routerLink="/home">
     <img src="assets/img/home.svg" alt="">

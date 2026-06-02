@@ -36,11 +36,6 @@ ion-content {
   --padding-bottom: 80px;
 }
 
-.line {
-  border: 24px solid rgb(80, 194, 201);
-  width: 100%;
-}
-
 .card {
   display: flex;
   flex-wrap: wrap;
@@ -121,6 +116,42 @@ footer {
   height: 70px;
 }
 
+.line {
+  border: 24px solid rgb(80, 194, 201);
+  width: 100%;
+  background: #50C2C9;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  color: black;
+  cursor: pointer;
+}
+
+.nav-item ion-icon {
+  font-size: 22px;
+}
+
+.nav-item span {
+  font-size: 10px;
+  text-align: center;
+  word-break: break-word;
+}
+
 
 
 @media (max-width: 600px) {
@@ -158,5 +189,17 @@ footer {
     font-size: 12px;
     gap: 5px;
 
+  }
+
+  .line {
+    padding: 10px 5px;
+  }
+
+  .nav-item ion-icon {
+    font-size: 18px;
+  }
+
+  .nav-item span {
+    font-size: 10px;
   }
 }

@@ -1,0 +1,107 @@
+<div class="line">
+
+  <div class="menu">
+    <div class="nav-item" routerLink="/ong">Cadastro ONG</div>
+    <div class="nav-item" routerLink="/apis">Sobre API</div>
+    <div class="nav-item" routerLink="/sobre-nos">Sobre Nós</div>
+  </div>
+
+</div>
+
+<ion-content>
+
+  <div id="container">
+
+    <h1>GeoApify API</h1>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>O que é a GeoApify?</h3>
+
+        <p>
+          A GeoApify é uma API de geolocalização e mapas utilizada para
+          localizar instituições e exibir informações geográficas de forma
+          precisa dentro da plataforma Connect Ong.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Objetivo no Projeto</h3>
+
+        <ul>
+          <li>Localizar ONGs próximas ao usuário.</li>
+          <li>Permitir busca por instituições distantes.</li>
+          <li>Exibir endereços de forma organizada.</li>
+          <li>Facilitar a conexão entre doadores e ONGs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Como a API funciona?</h3>
+
+        <p>
+          A GeoApify utiliza dados de localização do dispositivo para
+          identificar a posição do usuário e comparar com os endereços das
+          instituições cadastradas na plataforma.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Benefícios para o Connect Ong</h3>
+
+        <ul>
+          <li>Maior precisão na localização.</li>
+          <li>Experiência mais intuitiva.</li>
+          <li>Facilidade para encontrar instituições.</li>
+          <li>Maior transparência para os doadores.</li>
+          <li>Conexão rápida entre usuários e ONGs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Importância para a Transparência</h3>
+
+        <p>
+          Um dos pilares do Connect Ong é a confiança. Com a GeoApify,
+          o usuário consegue visualizar a localização das instituições,
+          aumentando a segurança na hora de realizar uma doação ou
+          participar como voluntário.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-info">
+        <h3>Integração com o Cadastro das ONGs</h3>
+
+        <p>
+          As informações cadastradas pelos responsáveis das instituições
+          alimentam a base de localização utilizada pela GeoApify,
+          permitindo que a ONG seja encontrada através da busca por
+          proximidade.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="spacer"></div>
+
+  <footer>
+    <ion-button class="secret" routerLink="/login">
+      <p>Login</p>
+    </ion-button>
+    <ion-button class="secret" routerLink="/home"><img src="assets/img/home.svg" alt=""></ion-button>
+    <ion-button class="secret" (click)="logout()">
+      <p>Logout</p>
+    </ion-button>
+  </footer>
+
+</ion-content>

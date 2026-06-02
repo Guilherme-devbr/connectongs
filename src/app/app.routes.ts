@@ -30,6 +30,10 @@ export const routes: Routes = [
     path: 'ong',
     loadComponent: () => import('./ong/ong.page').then( m => m.OngPage)
   },
+  {
+    path: 'apis',
+    loadComponent: () => import('./apis/apis.page').then( m => m.APISPage)
+  },
 
 
 ];

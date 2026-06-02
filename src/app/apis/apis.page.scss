@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ion-content {
+  --background: #f4f4f4;
+  --color: #000;
+}
+
+.line {
+  border: 24px solid rgb(80, 194, 201);
+  width: 100%;
+  background: #50C2C9;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 0;
+}
+
+#container h1 {
+  color: #50C2C9;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.card {
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow:
+    0 0 10px rgba(80, 194, 201, 0.8),
+    inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #50C2C9;
+  font-size: 20px;
+}
+
+.card p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #50C2C9;
+  color: #fff;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  color: black;
+  cursor: pointer;
+}
+
+.nav-item ion-icon {
+  font-size: 22px;
+}
+
+.nav-item span {
+  font-size: 10px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.spacer {
+  height: 90px;
+}
+
+@media (max-width: 600px) {
+
+  #container h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .card p,
+  .card li {
+    font-size: 14px;
+  }
+
+  .line {
+    padding: 10px 5px;
+  }
+
+  .nav-item ion-icon {
+    font-size: 18px;
+  }
+
+  .nav-item span {
+    font-size: 10px;
+  }
+
+}
