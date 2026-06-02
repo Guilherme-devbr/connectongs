@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { app } from '../../environments/firebase.config';
+
 import { db } from '../../environments/firebase.config';
 import { collection, addDoc } from 'firebase/firestore';
+
 import {
   IonContent,
   IonHeader,
+  IonToolbar,
   IonItem,
   IonInput,
   IonButton,
@@ -24,6 +26,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     IonContent,
     IonHeader,
+    IonToolbar,
     IonItem,
     IonInput,
     IonButton,
@@ -36,37 +39,62 @@ import { RouterLink } from '@angular/router';
 })
 export class RegistroPage {
 
-  nome = '';
-  email = '';
-  senha = '';
-  confirmarSenha = '';
-  isDonoOng = false;
+  nome: string = '';
+  email: string = '';
+  senha: string = '';
+  confirmarSenha: string = '';
+  isDonoOng: boolean = false;
+
+  constructor() {}
 
   async registrar() {
-  if (this.senha !== this.confirmarSenha) {
-    alert('As senhas não coincidem!');
-    return;
+
+    if (!this.nome || !this.email || !this.senha) {
+      alert('Preencha todos os campos!');
+      return;
+    }
+
+    if (this.senha !== this.confirmarSenha) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    try {
+
+      // Salva no Firebase
+      await addDoc(collection(db, 'cliente'), {
+        nome: this.nome,
+        email: this.email,
+        senha: this.senha,
+        isDonoOng: this.isDonoOng
+      });
+
+      // Salva no LocalStorage
+      const usuario = {
+        nome: this.nome,
+        email: this.email,
+        senha: this.senha,
+        logado: true,
+        isDonoOng: this.isDonoOng
+      };
+
+      localStorage.setItem(
+        'usuario',
+        JSON.stringify(usuario)
+      );
+
+      alert('Cadastro realizado com sucesso!');
+
+      // Limpa formulário
+      this.nome = '';
+      this.email = '';
+      this.senha = '';
+      this.confirmarSenha = '';
+      this.isDonoOng = false;
+
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao salvar no Firebase');
+    }
   }
-
-  try {
-    await addDoc(collection(db, 'cliente'), {
-      nome: this.nome,
-      email: this.email,
-      senha: this.senha,
-      isDonoOng: this.isDonoOng,
-    });
-
-    alert('Cadastro realizado com sucesso!');
-
-    this.nome = '';
-    this.email = '';
-    this.senha = '';
-    this.confirmarSenha = '';
-    this.isDonoOng = false;
-
-  } catch (error) {
-    console.error(error);
-    alert('Erro ao salvar no Firebase');
-  }
-}
 }
