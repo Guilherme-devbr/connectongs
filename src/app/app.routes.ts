@@ -34,6 +34,10 @@ export const routes: Routes = [
     path: 'apis',
     loadComponent: () => import('./apis/apis.page').then( m => m.APISPage)
   },
+  {
+    path: 'mapa',
+    loadComponent: () => import('./mapa/mapa.page').then( m => m.MapaPage)
+  },
 
 
 ];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 import {
   IonContent,
   IonHeader,
@@ -43,8 +43,12 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router
-  ) {}
-
+  ) {this.travarTela()}
+ async travarTela() {
+    await ScreenOrientation.lock({
+      orientation: 'portrait'
+    });
+  }
   ngOnInit() {}
 
   async login() {

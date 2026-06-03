@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 import { db } from '../../environments/firebase.config';
 import { collection, addDoc } from 'firebase/firestore';
 
@@ -45,8 +45,12 @@ export class RegistroPage {
   confirmarSenha: string = '';
   isDonoOng: boolean = false;
 
-  constructor() {}
-
+  constructor() {this.travarTela()}
+async travarTela() {
+  await ScreenOrientation.lock({
+    orientation: 'portrait'
+  });
+}
   async registrar() {
 
     if (!this.nome || !this.email || !this.senha) {
