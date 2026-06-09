@@ -2,70 +2,62 @@
   <div class="line">
 
     <div class="menu">
-      <div class="nav-item" routerLink="/ong">Cadastro ONG</div>
+      <div
+     class="nav-item"
+     routerLink="/ong"
+     *ngIf="podeCadastrarOng">
+     Cadastro ONG
+      </div>
       <div class="nav-item" routerLink="/apis">Sobre API</div>
       <div class="nav-item" routerLink="/sobre-nos">Sobre Nós</div>
     </div>
 
   </div>
+<ion-card
+  class="card"
+  *ngFor="let ong of ongs">
 
-  <ion-card class="card">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title>Nome do Local</ion-card-title>
-      <ion-card-subtitle>Descrição da ONG</ion-card-subtitle>
-      <ion-card-subtitle>Telefone</ion-card-subtitle>
-      <ion-card-subtitle>Redes Sociais</ion-card-subtitle>
-      <ion-card-subtitle>Chave Pix</ion-card-subtitle>
-    </ion-card-header>
+<img
+  [src]="ong.imagem"
+(click)="verificarLoginEAbrirMapa(ong.cep)"
+  style="cursor:pointer">
+  <ion-card-header>
 
-    <ion-card-content>
-      Endereço
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="card">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title>Nome do Local</ion-card-title>
-      <ion-card-subtitle>Descrição da ONG</ion-card-subtitle>
-      <ion-card-subtitle>Telefone</ion-card-subtitle>
-      <ion-card-subtitle>Redes Sociais</ion-card-subtitle>
-      <ion-card-subtitle>Chave Pix</ion-card-subtitle>
-    </ion-card-header>
+    <ion-card-title>
+      {{ ong.nome }}
+    </ion-card-title>
 
-    <ion-card-content>
-      Endereço
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="card">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title>Nome do Local</ion-card-title>
-      <ion-card-subtitle>Descrição da ONG</ion-card-subtitle>
-      <ion-card-subtitle>Telefone</ion-card-subtitle>
-      <ion-card-subtitle>Redes Sociais</ion-card-subtitle>
-      <ion-card-subtitle>Chave Pix</ion-card-subtitle>
-    </ion-card-header>
+    <ion-card-subtitle>
+      {{ ong.descricao }}
+    </ion-card-subtitle>
 
-    <ion-card-content>
-      Endereço
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="card">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title>Nome do Local</ion-card-title>
-      <ion-card-subtitle>Descrição da ONG</ion-card-subtitle>
-      <ion-card-subtitle>Telefone</ion-card-subtitle>
-      <ion-card-subtitle>Redes Sociais</ion-card-subtitle>
-      <ion-card-subtitle>Chave Pix</ion-card-subtitle>
-    </ion-card-header>
+    <ion-card-subtitle>
+      Telefone: {{ ong.telefone }}
+    </ion-card-subtitle>
 
-    <ion-card-content>
-      Endereço
-    </ion-card-content>
-  </ion-card>
+    <ion-card-subtitle>
+      Redes Sociais: {{ ong.redesSociais }}
+    </ion-card-subtitle>
 
+    <ion-card-subtitle>
+      Chave Pix:
+      {{ ong.pix }}
+
+      <span
+        (click)="copiarPix(ong.pix)"
+        style="cursor:pointer">
+        💲
+      </span>
+
+    </ion-card-subtitle>
+
+  </ion-card-header>
+
+  <ion-card-content>
+    CEP: {{ ong.cep }}
+  </ion-card-content>
+
+</ion-card>
   <div class="spacer"></div>
 </ion-content>
 <footer>

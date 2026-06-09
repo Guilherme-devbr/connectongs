@@ -19,10 +19,14 @@
       <ion-input type="email" [(ngModel)]="email" name="email" required>
       </ion-input>
     </ion-item>
+    <ion-item class="form1">
+      <ion-label position="floating">nova senha</ion-label>
+      <ion-input type="password" [(ngModel)]="senha" name="senha" required>
+      </ion-input>
+    </ion-item>
 
     <ion-button expand="block" type="submit" class="ion-margin-top">
-
-      Enviar Link
+      salvar nova senha
     </ion-button>
 
     <ion-button class="registro" routerLink="/login">

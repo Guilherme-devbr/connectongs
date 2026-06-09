@@ -1,6 +1,5 @@
 <div class="line">
   <div class="menu">
-    <div class="nav-item" routerLink="/ong">Cadastro ONG</div>
     <div class="nav-item" routerLink="/apis">Sobre API</div>
     <div class="nav-item" routerLink="/sobre-nos">Sobre Nós</div>
   </div>
@@ -14,46 +13,81 @@
 
     <ion-item class="campo">
       <ion-label position="floating">Nome da ONG</ion-label>
-      <ion-input [(ngModel)]="nome" name="nome" required>
+      <ion-input
+        [(ngModel)]="nome"
+        name="nome"
+        required>
       </ion-input>
     </ion-item>
 
     <ion-item class="campo">
       <ion-label position="floating">Descrição</ion-label>
-      <ion-input [(ngModel)]="descricao" name="descricao" required>
+      <ion-input
+        [(ngModel)]="descricao"
+        name="descricao"
+        required>
+      </ion-input>
+    </ion-item>
+    <ion-item class="campo">
+      <ion-label position="floating">rede Sociais</ion-label>
+      <ion-input
+        [(ngModel)]="redesSociais"
+        name="redesSociais"
+        required>
       </ion-input>
     </ion-item>
 
     <ion-item class="campo">
       <ion-label position="floating">CEP</ion-label>
-      <ion-input [(ngModel)]="cep" name="cep" required>
+      <ion-input
+        [(ngModel)]="cep"
+        name="cep"
+        maxlength="9"
+        (ionInput)="formatarCep($event)">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="campo">
+      <ion-label position="floating">Chave PIX</ion-label>
+      <ion-input
+        [(ngModel)]="pix"
+        name="pix"
+        required>
       </ion-input>
     </ion-item>
 
     <ion-item class="campo">
       <ion-label position="floating">Telefone</ion-label>
-      <ion-input type="tel" [(ngModel)]="telefone" name="telefone">
+      <ion-input
+        type="tel"
+        [(ngModel)]="telefone"
+        name="telefone">
       </ion-input>
     </ion-item>
 
     <ion-item class="campo">
       <ion-label position="floating">URL da Imagem</ion-label>
-      <ion-input [(ngModel)]="imagem" name="imagem">
+      <ion-input
+        [(ngModel)]="imagem"
+        name="imagem">
       </ion-input>
     </ion-item>
 
-    <ion-button expand="block" type="submit" class="btn-cadastrar">
-
+    <ion-button
+      expand="block"
+      type="submit"
+      class="btn-cadastrar">
       Cadastrar ONG
-
     </ion-button>
 
   </form>
 
 </ion-content>
+
 <div class="spacer"></div>
+
 <footer>
   <ion-button class="secret" routerLink="/home">
-    <img src="assets/img/home.svg" alt="">
+    <img src="assets/img/home.svg" alt="Home">
   </ion-button>
 </footer>
