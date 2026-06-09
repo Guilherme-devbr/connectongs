@@ -2,9 +2,12 @@ import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+<<<<<<< HEAD
 import { Capacitor } from '@capacitor/core';
 import { Geolocation } from '@capacitor/geolocation';
 
+=======
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
 import {
   IonContent,
   IonHeader,
@@ -47,6 +50,7 @@ export class MapaPage implements AfterViewInit {
     private route: ActivatedRoute
   ) {}
 
+<<<<<<< HEAD
   async ngAfterViewInit() {
 
     try {
@@ -133,6 +137,65 @@ export class MapaPage implements AfterViewInit {
       enableHighAccuracy: true,
       timeout: 15000
     });
+=======
+  ngAfterViewInit() {
+
+    console.log('Mapa carregado');
+
+    this.route.queryParams.subscribe(params => {
+
+      const latDestino =
+        Number(params['lat']);
+
+      const lonDestino =
+        Number(params['lon']);
+
+      console.log(
+        'Destino:',
+        latDestino,
+        lonDestino
+      );
+
+      navigator.geolocation.getCurrentPosition(
+
+        (posicao) => {
+
+          const latUsuario =
+            posicao.coords.latitude;
+
+          const lonUsuario =
+            posicao.coords.longitude;
+
+          console.log(
+            'Usuário:',
+            latUsuario,
+            lonUsuario
+          );
+
+          this.criarMapa(
+            latUsuario,
+            lonUsuario,
+            latDestino,
+            lonDestino
+          );
+
+        },
+
+        (erro) => {
+
+          console.error(erro);
+
+          alert(
+            'Permita o acesso à localização.'
+          );
+
+        }
+
+      );
+
+    });
+
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
   }
 
   criarMapa(
@@ -151,6 +214,7 @@ export class MapaPage implements AfterViewInit {
       13
     );
 
+<<<<<<< HEAD
     L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -168,6 +232,37 @@ export class MapaPage implements AfterViewInit {
       .addTo(this.map)
       .bindPopup('🎯 Destino');
 
+=======
+    setTimeout(() => {
+      this.map.invalidateSize();
+    }, 300);
+
+    L.tileLayer(
+      'https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=273e2940c9084285bfc882d52c4c543f',
+      {
+        maxZoom: 20,
+        attribution: '© Geoapify'
+      }
+    ).addTo(this.map);
+
+    // Marcador usuário
+    L.marker([
+      latUsuario,
+      lonUsuario
+    ])
+      .addTo(this.map)
+      .bindPopup('Sua localização');
+
+    // Marcador ONG
+    L.marker([
+      latDestino,
+      lonDestino
+    ])
+      .addTo(this.map)
+      .bindPopup('ONG');
+
+    // Linha ligando os pontos
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
     L.polyline(
       [
         [latUsuario, lonUsuario],
@@ -178,11 +273,16 @@ export class MapaPage implements AfterViewInit {
       }
     ).addTo(this.map);
 
+<<<<<<< HEAD
+=======
+    // Ajusta o zoom para mostrar os dois pontos
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
     const bounds = L.latLngBounds([
       [latUsuario, lonUsuario],
       [latDestino, lonDestino]
     ]);
 
+<<<<<<< HEAD
     this.map.fitBounds(bounds, {
       padding: [50, 50]
     });
@@ -191,4 +291,15 @@ export class MapaPage implements AfterViewInit {
       this.map.invalidateSize();
     }, 500);
   }
+=======
+    this.map.fitBounds(
+      bounds,
+      {
+        padding: [50, 50]
+      }
+    );
+
+  }
+
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
 }

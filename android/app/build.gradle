@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+<<<<<<< HEAD
     namespace = "com.example.app"
     compileSdk = rootProject.ext.compileSdkVersion
+=======
+    namespace "com.example.app"
+    compileSdk rootProject.ext.compileSdkVersion
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
     defaultConfig {
         applicationId "com.example.app"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -13,7 +18,11 @@ android {
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
              // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+<<<<<<< HEAD
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+=======
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+>>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
         }
     }
     buildTypes {
