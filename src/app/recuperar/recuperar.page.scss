@@ -12,6 +12,7 @@ ion-content {
 form {
   width: 100%;
   margin-top: 128px;
+  padding-bottom: 70px;
 }
 
 h1 {
@@ -38,6 +39,7 @@ ion-item {
 .form1 {
   --background: #fff;
   --color: #000;
+  z-index: -1;
   border-radius: 100px;
   margin-bottom: 16px;
 }
@@ -83,4 +85,9 @@ footer {
 .line {
   border: 24px solid #50C2C9;
   width: 100%;
+}
+
+
+.spacer {
+  padding-bottom: 70px;
 }

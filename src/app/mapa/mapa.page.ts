@@ -1,18 +1,17 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
-<<<<<<< HEAD
 import { Capacitor } from '@capacitor/core';
 import { Geolocation } from '@capacitor/geolocation';
 
-=======
->>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
 import {
   IonContent,
   IonHeader,
   IonToolbar,
-  IonTitle
+  IonTitle,
+  IonButton
 } from '@ionic/angular/standalone';
 
 import * as L from 'leaflet';
@@ -39,7 +38,9 @@ L.Icon.Default.mergeOptions({
     IonContent,
     IonHeader,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonButton,
+    RouterLink
   ]
 })
 export class MapaPage implements AfterViewInit {
@@ -48,10 +49,11 @@ export class MapaPage implements AfterViewInit {
 
   constructor(
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
-<<<<<<< HEAD
   async ngAfterViewInit() {
+
+    console.log('========== MAPA ==========');
 
     try {
 
@@ -59,31 +61,29 @@ export class MapaPage implements AfterViewInit {
 
       const posicao = await this.obterLocalizacao();
 
+      console.log('✅ GPS obtido:', posicao);
+
       const latUsuario = posicao.coords.latitude;
       const lonUsuario = posicao.coords.longitude;
 
-      console.log(
-        '📌 Usuário:',
-        latUsuario,
-        lonUsuario
-      );
+      console.log('📌 Latitude usuário:', latUsuario);
+      console.log('📌 Longitude usuário:', lonUsuario);
 
       this.route.queryParams.subscribe(params => {
+
+        console.log('📦 Parâmetros recebidos:', params);
 
         const latDestino = Number(params['lat']);
         const lonDestino = Number(params['lon']);
 
-        console.log(
-          '🎯 Destino:',
-          latDestino,
-          lonDestino
-        );
+        console.log('🎯 Latitude destino:', latDestino);
+        console.log('🎯 Longitude destino:', lonDestino);
 
         if (
           isNaN(latDestino) ||
           isNaN(lonDestino)
         ) {
-          alert('Destino inválido');
+          alert('Destino inválido.');
           return;
         }
 
@@ -96,106 +96,65 @@ export class MapaPage implements AfterViewInit {
 
       });
 
-    } catch (erro: any) {
+    } catch (erro) {
 
-      console.error(
-        '🚨 ERRO GPS COMPLETO:',
-        erro
-      );
+      console.error('❌ Erro completo:', erro);
 
-      alert(
-        'Erro ao obter localização:\n\n' +
-        (erro?.message || JSON.stringify(erro))
-      );
+      alert('Erro ao obter localização. Veja o Console (F12).');
+
     }
+
   }
 
   async obterLocalizacao(): Promise<any> {
 
-    // Navegador
+    console.log('🖥️ Plataforma:', Capacitor.getPlatform());
+
     if (Capacitor.getPlatform() === 'web') {
+
+      console.log('🌐 Usando GPS do navegador...');
 
       return new Promise((resolve, reject) => {
 
         navigator.geolocation.getCurrentPosition(
-          resolve,
-          reject,
+
+          (pos) => {
+
+            console.log('✅ GPS navegador OK');
+
+            resolve(pos);
+
+          },
+
+          (err) => {
+
+            console.error('❌ Erro GPS navegador:', err);
+
+            reject(err);
+
+          },
+
           {
             enableHighAccuracy: true,
-            timeout: 15000
+            timeout: 15000,
+            maximumAge: 0
           }
+
         );
 
       });
 
     }
 
-    // Android/iOS
+    console.log('📱 Usando GPS do Capacitor...');
+
     await Geolocation.requestPermissions();
 
     return await Geolocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 15000
     });
-=======
-  ngAfterViewInit() {
 
-    console.log('Mapa carregado');
-
-    this.route.queryParams.subscribe(params => {
-
-      const latDestino =
-        Number(params['lat']);
-
-      const lonDestino =
-        Number(params['lon']);
-
-      console.log(
-        'Destino:',
-        latDestino,
-        lonDestino
-      );
-
-      navigator.geolocation.getCurrentPosition(
-
-        (posicao) => {
-
-          const latUsuario =
-            posicao.coords.latitude;
-
-          const lonUsuario =
-            posicao.coords.longitude;
-
-          console.log(
-            'Usuário:',
-            latUsuario,
-            lonUsuario
-          );
-
-          this.criarMapa(
-            latUsuario,
-            lonUsuario,
-            latDestino,
-            lonDestino
-          );
-
-        },
-
-        (erro) => {
-
-          console.error(erro);
-
-          alert(
-            'Permita o acesso à localização.'
-          );
-
-        }
-
-      );
-
-    });
-
->>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
   }
 
   criarMapa(
@@ -204,6 +163,8 @@ export class MapaPage implements AfterViewInit {
     latDestino: number,
     lonDestino: number
   ) {
+
+    console.log('🗺️ Criando mapa...');
 
     if (this.map) {
       this.map.remove();
@@ -214,7 +175,6 @@ export class MapaPage implements AfterViewInit {
       13
     );
 
-<<<<<<< HEAD
     L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -225,44 +185,12 @@ export class MapaPage implements AfterViewInit {
 
     L.marker([latUsuario, lonUsuario])
       .addTo(this.map)
-      .bindPopup('📍 Sua localização')
-      .openPopup();
+      .bindPopup('📍 Você');
 
     L.marker([latDestino, lonDestino])
       .addTo(this.map)
       .bindPopup('🎯 Destino');
 
-=======
-    setTimeout(() => {
-      this.map.invalidateSize();
-    }, 300);
-
-    L.tileLayer(
-      'https://maps.geoapify.com/v1/tile/osm-carto/{z}/{x}/{y}.png?apiKey=273e2940c9084285bfc882d52c4c543f',
-      {
-        maxZoom: 20,
-        attribution: '© Geoapify'
-      }
-    ).addTo(this.map);
-
-    // Marcador usuário
-    L.marker([
-      latUsuario,
-      lonUsuario
-    ])
-      .addTo(this.map)
-      .bindPopup('Sua localização');
-
-    // Marcador ONG
-    L.marker([
-      latDestino,
-      lonDestino
-    ])
-      .addTo(this.map)
-      .bindPopup('ONG');
-
-    // Linha ligando os pontos
->>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
     L.polyline(
       [
         [latUsuario, lonUsuario],
@@ -273,33 +201,20 @@ export class MapaPage implements AfterViewInit {
       }
     ).addTo(this.map);
 
-<<<<<<< HEAD
-=======
-    // Ajusta o zoom para mostrar os dois pontos
->>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
     const bounds = L.latLngBounds([
       [latUsuario, lonUsuario],
       [latDestino, lonDestino]
     ]);
 
-<<<<<<< HEAD
     this.map.fitBounds(bounds, {
       padding: [50, 50]
     });
 
     setTimeout(() => {
       this.map.invalidateSize();
+      console.log('✅ Mapa criado com sucesso!');
     }, 500);
-  }
-=======
-    this.map.fitBounds(
-      bounds,
-      {
-        padding: [50, 50]
-      }
-    );
 
   }
 
->>>>>>> 4a4efd8c8af5d222c204df324666cf42e725bd84
 }
